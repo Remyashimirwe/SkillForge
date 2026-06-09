@@ -1,5 +1,5 @@
-import Navbar from './components/Navbar';
-import Sidebar from './components/Sidebar';
+import Navbar from './components/navbar';
+import Sidebar from './components/sidebar';
 import { Route, Routes } from 'react-router-dom';
 import Home from './pages/home';
 import About from './pages/about';
@@ -12,11 +12,11 @@ function App() {
 
   return (
     <>
-      <div className='flex flex-col h-screen'>
+      <div className='flex flex-col h-screen dark:bg-slate-800 dark:text-white transition-colors duration-500'>
         <Navbar/>
         <div className='flex flex-1'>
           <Sidebar/>
-        <main className='bg-amber-300/50  flex flex-1 justify-center overflow-y-auto'>
+        <main className='bg-amber-300/50 dark:bg-gray-500 dark:text-white flex flex-1 justify-center overflow-y-auto'>
           <Routes>
             <Route path='/' element = {<Home/>}></Route>
             <Route path='/about' element = {<About/>}></Route>
