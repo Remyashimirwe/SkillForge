@@ -11,7 +11,7 @@ export default function ThemeToggle(){
     return(
         <button 
         onClick={() => setIsDark(!isDark)}
-        className="">
+        className="cursor-pointer" >
             {isDark ? 
             <Sun/>  : <Moon/>
         }
