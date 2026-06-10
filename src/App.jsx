@@ -6,6 +6,13 @@ import About from './pages/about';
 import Services from './pages/services';
 import Login from './pages/login';
 import Register from './pages/register';
+import Profile from './pages/profile';
+import Message from './pages/messages'
+import Communities from './pages/communities';
+import Tasks from './pages/tasks';
+import Settings from './pages/settings';
+import Support from './pages/support';
+import Privacy from './pages/privacy';
 
 function App() {
   
@@ -16,13 +23,20 @@ function App() {
         <Navbar/>
         <div className='flex flex-1'>
           <Sidebar/>
-        <main className='bg-amber-300/50 dark:bg-gray-500 dark:text-white flex flex-1 justify-center overflow-y-auto'>
+        <main className='bg-amber-300/50 py-12 dark:bg-gray-500 dark:text-white flex flex-1 justify-center overflow-y-auto'>
           <Routes>
             <Route path='/' element = {<Home/>}></Route>
             <Route path='/about' element = {<About/>}></Route>
             <Route path='/services' element = {<Services/>}></Route>
             <Route path='/login' element = {<Login/>}></Route>
             <Route path='/register' element = {<Register/>}></Route>
+            <Route path='/profile' element = {<Profile/>}></Route>
+            <Route path='/messages' element = {<Message/>}></Route>
+            <Route path='/communities' element = {<Communities/>}></Route>
+            <Route path='/tasks' element = {<Tasks/>}></Route>
+            <Route path='/settings' element = {<Settings/>}></Route>
+            <Route path='/support' element = {<Support/>}></Route>
+            <Route path='/privacy' element = {<Privacy/>}></Route>
           </Routes>
         </main>
       </div>
