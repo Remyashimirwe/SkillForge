@@ -8,16 +8,22 @@ function Navbar() {
     return localStorage.getItem('darkMode') === 'true';
   });
   useEffect(() => {
-    // Toggle a global dark class so the whole page can switch styles
+    // Toggle global dark class and adjust body styles so the whole page switches
     if (darkMode) {
       document.documentElement.classList.add('dark');
+      document.body.classList.add('dark');
+      // set sensible defaults for backgrounds and text so non-tailwind elements also flip
+      document.body.style.backgroundColor = '#000000';
+      document.body.style.color = '#f7f7f7';
       localStorage.setItem('darkMode', 'true');
       console.log('Dark mode enabled');
     } else {
       document.documentElement.classList.remove('dark');
+      document.body.classList.remove('dark');
+      document.body.style.backgroundColor = '';
+      document.body.style.color = '';
       localStorage.setItem('darkMode', 'false');
       console.log('Dark mode disabled');
-
     }
   }, [darkMode]);
   return (
@@ -51,7 +57,7 @@ function Navbar() {
         className="p-2 rounded-lg hover:bg-gray-700 transition-colors"
         aria-label="Toggle dark mode"
       >
-        {darkMode ? <Sun size={24} /> : <Moon size={24} />}
+        {darkMode ? <Sun className="icon" size={24} /> : <Moon className="icon" size={24} />}
       </button>
       {<Menu id="waa" onClick={() =>setIsOpen(true)}/>}
    
