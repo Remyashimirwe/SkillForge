@@ -1,28 +1,66 @@
 import { Link } from "react-router-dom"
+import { CircleUser as User,MessageSquare as Message,Users as Globe, ListChecks as Tasks,
+     SlidersVertical as Settings, LifeBuoy as Support, ShieldCheck as Privacy } from "lucide-react"
 export default function Sidebar (){
     return (
-        <div className="bg-indigo-500 w-44">
-            <ul className=" text-white text-lg my-4 flex items-center flex-col gap-3 font-serif">
+        <div className="bg-indigo-600 rounded-t-3xl rounded-b-2xl w-64 px-4 py-6">
+            <ul className=" text-indigo-100 text-md my-6 mx-5 flex flex-col gap-2.5 font-sans font-medium">
                 <li>
-                    <Link to="/profile">Profile</Link>
+                    <Link to="/profile" 
+                        className="flex items-center gap-3.5 px-4 py-3 rounded-xl hover:bg-indigo-700/50
+                            hover:text-white transition-colors duration-200">
+                        <User className="w-5 h-5 opacity-80"/> 
+                        <span>Profile</span>
+                    </Link>
                 </li>
                 <li>
-                    <Link to="/messages">Messages</Link>
+                    <Link to="/messages"
+                    className="flex items-center gap-3.5 px-4 py-3 rounded-xl hover:bg-indigo-700/50
+                            hover:text-white transition-colors duration-200">
+                        <Message className="w-5 h-5 opacity-80"/>
+                        <span>Messages</span>
+                    </Link>
                 </li>
                 <li>
-                    <Link to="/communities">Communities</Link>
+                    <Link to="/communities"
+                    className="flex items-center gap-3.5 px-4 py-3 rounded-xl hover:bg-indigo-700/50
+                            hover:text-white transition-colors duration-200">
+                        <Globe className="w-5 h-5 opacity-80"/>
+                        <span>Communities</span>
+                    </Link>
                 </li>
                 <li>
-                    <Link to="/tasks">Tasks</Link>
+                    <Link to="/tasks"
+                    className="flex items-center gap-3.5 px-4 py-3 rounded-xl hover:bg-indigo-700/50
+                            hover:text-white transition-colors duration-200">
+                        <Tasks className="w-5 h-5 opacity-80"/>
+                        <span>Tasks</span>
+                    </Link>
                 </li>
                 <li>
-                    <Link to="/settings">Settings</Link>
+                    <Link to="/settings"
+                    className="flex items-center gap-3.5 px-4 py-3 rounded-xl hover:bg-indigo-700/50
+                            hover:text-white transition-colors duration-200">
+                        <Settings  className="w-5 h-5 opacity-80"/>
+                        <span>Settings</span>
+                    </Link>
                 </li>
                 <li>
-                    <Link to="/support">Support</Link>
+                    <Link to="/support"
+                    className="flex items-center gap-3.5 px-4 py-3 rounded-xl hover:bg-indigo-700/50
+                            hover:text-white transition-colors duration-200">
+                        <Support className="w-5 h-5 opacity-80"/>
+                        <span>Support</span>
+                    </Link>
                 </li>
                 <li>
-                    <Link to="/privacy">Privacy</Link>
+                    <Link to="/privacy"
+                    className="flex items-center gap-3.5 px-4 py-3 rounded-xl hover:bg-indigo-700/50
+                            hover:text-white transition-colors duration-200"className="flex items-center gap-3.5 px-4 py-3 rounded-xl hover:bg-indigo-700/50
+                            hover:text-white transition-colors duration-200">
+                        <Privacy className="w-5 h-5 opacity-80"/>
+                        <span>Privacy</span>
+                    </Link>
                 </li>
             </ul>
         </div>
