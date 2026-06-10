@@ -1,1 +1,13 @@
 @import 'tailwindcss';
+@media(max-width:855px){
+    .mon{
+        display: none;
+    }
+    .wa{
+        display: flex;
+    }
+    nav{
+        display: flex;
+        justify-content: space-between;
+    }
+}
