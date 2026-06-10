@@ -3,7 +3,7 @@ import { CircleUser as User,MessageSquare as Message,Users as Globe, ListChecks 
      SlidersVertical as Settings, LifeBuoy as Support, ShieldCheck as Privacy } from "lucide-react"
 export default function Sidebar (){
     return (
-        <div className="bg-indigo-600 rounded-t-3xl rounded-b-2xl w-64 px-4 py-6">
+        <div className="bg-indigo-600 rounded-t-3xl flex flex-col justify-between rounded-b-2xl w-64 px-4 py-6">
             <ul className=" text-indigo-100 text-md my-6 mx-5 flex flex-col gap-2.5 font-sans font-medium">
                 <li>
                     <Link to="/profile" 
@@ -37,32 +37,35 @@ export default function Sidebar (){
                         <span>Tasks</span>
                     </Link>
                 </li>
+            </ul>
+            <ul className=" text-indigo-100 text-md my-6 mx-5 flex flex-col gap-2.5 font-sans font-medium">
                 <li>
                     <Link to="/settings"
                     className="flex items-center gap-3.5 px-4 py-3 rounded-xl hover:bg-indigo-700/50
-                            hover:text-white transition-colors duration-200">
-                        <Settings  className="w-5 h-5 opacity-80"/>
-                        <span>Settings</span>
+                     hover:text-white transition-colors duration-200">
+                    <Settings  className="w-5 h-5 opacity-80"/>
+                    <span>Settings</span>
                     </Link>
                 </li>
                 <li>
                     <Link to="/support"
                     className="flex items-center gap-3.5 px-4 py-3 rounded-xl hover:bg-indigo-700/50
-                            hover:text-white transition-colors duration-200">
-                        <Support className="w-5 h-5 opacity-80"/>
-                        <span>Support</span>
+                      hover:text-white transition-colors duration-200">
+                    <Support className="w-5 h-5 opacity-80"/>
+                    <span>Support</span>
                     </Link>
                 </li>
                 <li>
                     <Link to="/privacy"
                     className="flex items-center gap-3.5 px-4 py-3 rounded-xl hover:bg-indigo-700/50
-                            hover:text-white transition-colors duration-200"className="flex items-center gap-3.5 px-4 py-3 rounded-xl hover:bg-indigo-700/50
-                            hover:text-white transition-colors duration-200">
+                         hover:text-white transition-colors duration-200"className="flex items-center gap-3.5 px-4 py-3 rounded-xl hover:bg-indigo-700/50
+                        hover:text-white transition-colors duration-200">
                         <Privacy className="w-5 h-5 opacity-80"/>
                         <span>Privacy</span>
                     </Link>
                 </li>
             </ul>
+            
         </div>
     )
 }
