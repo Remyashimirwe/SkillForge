@@ -23,7 +23,7 @@ function App() {
         <Navbar/>
         <div className='flex flex-1'>
           <Sidebar/>
-        <main className='bg-amber-300/50 py-12 dark:bg-gray-500 dark:text-white flex flex-1 justify-center overflow-y-auto'>
+        <main className='bg-slate-50 py-12 dark:bg-gray-500 dark:text-white flex flex-1 justify-center overflow-y-auto'>
           <Routes>
             <Route path='/' element = {<Home/>}></Route>
             <Route path='/about' element = {<About/>}></Route>

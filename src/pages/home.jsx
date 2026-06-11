@@ -1,6 +1,11 @@
+import HeroSection from "../components/HeroSection"
 function Home (){
     return(
-        <h1>Home Page</h1>
+        <div className="">
+            <HeroSection />
+            <h1>Home Page content...!</h1>
+        </div>
+        
     )
 }
 
