@@ -19,9 +19,9 @@ function App() {
 
   return (
     <>
-      <div className='flex flex-col h-screen dark:bg-slate-800 dark:text-white transition-colors duration-500'>
+      <div className='flex flex-col h-screen max-h-screen dark:bg-slate-800 dark:text-white transition-colors duration-500'>
         <Navbar/>
-        <div className='flex flex-1'>
+        <div className='flex flex-1 h-full overflow-hidden'>
           <Sidebar/>
         <main className='bg-slate-50 py-12 dark:bg-gray-500 dark:text-white flex flex-1 justify-center overflow-y-auto'>
           <Routes>
