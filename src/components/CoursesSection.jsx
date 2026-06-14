@@ -55,16 +55,29 @@ export default function CoursesSection () {
         }
     ]
 
+    function FilterCourses(e){
+        e.preventDefault();
+        console.log('button working..!');
+        
+    }
+
     return(
         <div className='bg-slate-400 flex flex-col w-full items-center py-8.5'>
             <div className='flex flex-col items-center w-full gap-y-12.5'>
-                <div className='flex'>
-                    <h1 className='text-3xl font-bold'>Our Courses</h1>
-                    <div className='flex'>
+                <div className='flex gap-x-6 items-center'>
+                        <h1 className='text-3xl font-bold'>Our Courses</h1>
+                    <div 
+                        className='flex items-center border-2 border-blue-600 rounded-2xl overflow-hidden  bg-white/70 h-14'>
+
+                        <button
+                        type='submit' onClick={FilterCourses}
+                         className='flex items-center text-white cursor-pointer hover:bg-blue-800 transition-colors duration-500 bg-blue-600 h-full px-5'>
+                            <Search className='h-6 w-6 stroke-3' />
+                        </button>
                         <input 
-                        className='rounded-full flex justify-end border px-3 w-50.5 h-12.5'
+                        className='px-4 w-full h-full text-gray-700 focus:outline-none'
                         type="text" placeholder='Search a course...'/>
-                        <button>Search</button>
+
                     </div>
                     
                 </div>
