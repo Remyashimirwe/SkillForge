@@ -143,7 +143,7 @@ export default function CoursesSection () {
                 ) : (
                     <div className='text-white text-xl py-10'>
                         no Courses match with "{searchInput}"
-                        </div>
+                    </div>
                 )
                 }
                     
