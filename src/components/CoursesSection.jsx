@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import graphic from '../assets/graphic.jpg';
 import literacy from '../assets/literacy.png';
 import music from '../assets/music.webp';
@@ -54,6 +55,10 @@ export default function CoursesSection () {
     
         }
     ]
+    const [searchInput, setSearchInput] = useState("")
+    const filteredCourses = courseData.filter((course) => {
+        return course.title.toLowerCase().includes(searchInput.toLowerCase())
+    });
 
     function FilterCourses(e){
         e.preventDefault();
@@ -64,25 +69,32 @@ export default function CoursesSection () {
     return(
         <div className='bg-slate-400 flex flex-col w-full items-center py-8.5'>
             <div className='flex flex-col items-center w-full gap-y-12.5'>
-                <div className='flex gap-x-6 items-center'>
-                        <h1 className='text-3xl font-bold'>Our Courses</h1>
-                    <div 
-                        className='flex items-center border-2 border-blue-600 rounded-2xl overflow-hidden  bg-white/70 h-14'>
+                <div className='w-full flex  justify-center items-center'>
+                        <div className='w-full flex justify-center items-center'>
+                            <h1 className='text-3xl text-center font-bold'>Our Courses</h1>
+                        </div>
+                    <div className='flex px-10 w-full justify-end'>
+                        <div 
+                            className='flex items-center border-2 border-blue-600 rounded-2xl overflow-hidden  bg-white/70 h-14'>
 
-                        <button
-                        type='submit' onClick={FilterCourses}
-                         className='flex items-center text-white cursor-pointer hover:bg-blue-800 transition-colors duration-500 bg-blue-600 h-full px-5'>
-                            <Search className='h-6 w-6 stroke-3' />
-                        </button>
-                        <input 
-                        className='px-4 w-full h-full text-gray-700 focus:outline-none'
-                        type="text" placeholder='Search a course...'/>
-
+                            <button
+                            type='submit' onClick={FilterCourses}
+                            className='flex items-center text-white cursor-pointer hover:bg-blue-800 transition-colors duration-500 bg-blue-600 h-full px-5'>
+                                <Search className='h-6 w-6 stroke-3' />
+                            </button>
+                            <input 
+                            type="text" placeholder='Search a course...'
+                            value={searchInput}
+                            onChange={(e)=> setSearchInput(e.target.value)}
+                            className='px-4 w-full h-full text-gray-700 focus:outline-none'
+                            />
+                        </div>
                     </div>
                     
                 </div>
                 <div className='flex flex-wrap gap-x-18 gap-y-15  justify-center w-full'>
-                    {courseData.map((course) => (
+                    {filteredCourses.length > 0 ? (
+                        filteredCourses.map((course) => (
                         <div 
                             key={course.id}
                             className={`bg-slate-900 w-full sm:w-[calc(50%-1rem)] md:w-[calc(33.33%-7rem)]
@@ -127,7 +139,13 @@ export default function CoursesSection () {
                                 </button>
                             </div>    
                         </div>   
-                    ))}
+                    ))
+                ) : (
+                    <div className='text-white text-xl py-10'>
+                        no Courses match with "{searchInput}"
+                        </div>
+                )
+                }
                     
                 </div>
             </div>
