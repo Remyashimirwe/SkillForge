@@ -67,12 +67,12 @@ export default function CoursesSection () {
     }
 
     return(
-        <div className='bg-slate-400 flex flex-col w-full items-center py-8.5'>
+        <div className='bg-slate-400 dark:bg-amber-100/50 flex flex-col w-full items-center transition-all duration-500 py-8.5'>
             <div className='flex flex-col items-center w-full gap-y-12.5'>
                 <div className='w-full flex  justify-center items-center'>
                         <div className='w-full flex justify-center items-center'>
-                            <h1 className='text-3xl text-center font-bold'>Our Courses</h1>
-                        </div>
+                            <h1 className='text-3xl dark:text-emerald-900 text-center font-bold'>Our Courses</h1>
+                        </div> 
                     <div className='flex px-10 w-full justify-end'>
                         <div 
                             className='flex items-center border-2 border-blue-600 rounded-2xl overflow-hidden  bg-white/70 h-14'>
