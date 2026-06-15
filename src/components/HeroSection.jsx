@@ -1,23 +1,23 @@
-import Campus from '../assets/image1.jpg';
+import Campus from '../assets/auca.jpg';
 import student from '../assets/image2.jfif';
 import library from '../assets/image3.jfif'
 export default function HeroSection (){
     return (
-        <section className='flex flex-col items-center'>
+        <section className='w-full flex flex-col items-center'>
             <div className='relative h-80 md:h-112.5 w-full overflow-hidden rounded-full'>
                 <img src={Campus} alt="UoK Kigali Campus" 
                 className='h-full w-full object-cover object-center' />
 
-                <h1 className=
-                    'absolute inset-0 h-fit w-fit m-auto bg-slate-200/70 font-semibold text-4xl py-2 px-4 text-pink-900'>
-                    University of Kigali Online Learning Portal</h1>
+                {/* <h1 className=
+                    'absolute inset-0 h-fit w-fit m-auto bg-slate-200/70 font-semibold text-4xl py-3 px-4 text-pink-900'>
+                    AUCA Online Learning Portal</h1> */}
             </div>
             <div 
-            className='text-white w-4xl border border-slate-500/25 rounded-xl px-4 py-8 my-4 
+            className='text-white w-4xl border border-slate-500/25 dark:border-slate-300 rounded-xl px-4 py-8 my-4 
                     flex flex-col gap-3 justify-center'>
                 <div className=''>
-                    <p className='text-slate-900'>
-                    The University of Kigali is one of the leading private higher education institutions of learning in Rwanda. UoK is a fully accredited and chartered University by the Government of the Republic of Rwanda. The University of Kigali has three campuses: the main campus, located at Prester House in Kacyiru, near Kigali Heights, the Remera campus located at the KN3 road, opposite the Grand Legacy Hotel, and the Musanze campus in the Musanze District, Northern Province, housed in the Prestigious RSSB Building.
+                    <p className='text-slate-900 text-left dark:text-slate-50'>
+                    Adventist University Central Africa is one of the leading private higher education institutions of learning in Rwanda. AUCA is a fully accredited and chartered University by the Government of the Republic of Rwanda. AUCA has two campuses: the main campus, located at KG 230 St road, near RDB Building, and the Masoro campus is located at KG 162 Avenue, near Evangelical Restoration Church (Kwa Masasu).
                 </p>
                 </div>
                 
