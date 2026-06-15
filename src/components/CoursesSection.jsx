@@ -15,7 +15,6 @@ export default function CoursesSection () {
             category: 'Software Engineering',
             description: 'Master coding fundamentals and full-stack development to build responsive web apps and launch your tech career.',
             image:  software,
-            baseHeight: 'h-128.5',
         },
         {
             id: 2,
@@ -37,7 +36,6 @@ export default function CoursesSection () {
             category: 'Audio Engineering',
             description: 'Learn to record, mix, and master your own tracks or podcasts using professional audio engineering tools.',
             image:  music,
-            customHeight: 'h-136.5'
         },
         {
             id: 5,
@@ -60,16 +58,11 @@ export default function CoursesSection () {
         return course.title.toLowerCase().includes(searchInput.toLowerCase())
     });
 
-    function FilterCourses(e){
-        e.preventDefault();
-        console.log('button working..!');
-        
-    }
 
     return(
         <div className='bg-slate-400 dark:bg-amber-100/50 flex flex-col w-full items-center transition-all duration-500 py-8.5'>
             <div className='flex flex-col items-center w-full gap-y-12.5'>
-                <div className='w-full flex  justify-center items-center'>
+                <div className='w-full flex justify-center items-center'>
                         <div className='w-full flex justify-center items-center'>
                             <h1 className='text-3xl dark:text-emerald-900 text-center font-bold'>Our Courses</h1>
                         </div> 
@@ -77,11 +70,10 @@ export default function CoursesSection () {
                         <div 
                             className='flex items-center border-2 border-blue-600 rounded-2xl overflow-hidden  bg-white/70 h-14'>
 
-                            <button
-                            type='submit' onClick={FilterCourses}
-                            className='flex items-center text-white cursor-pointer hover:bg-blue-800 transition-colors duration-500 bg-blue-600 h-full px-5'>
-                                <Search className='h-6 w-6 stroke-3' />
-                            </button>
+                            <div
+                                className='flex items-center text-white cursor-pointer bg-blue-600 h-full px-5'>
+                                <Search className='h-6 w-6 stroke-3' />  
+                            </div>
                             <input 
                             type="text" placeholder='Search a course...'
                             value={searchInput}
@@ -92,14 +84,14 @@ export default function CoursesSection () {
                     </div>
                     
                 </div>
-                <div className='flex flex-wrap gap-x-18 gap-y-15  justify-center w-full'>
+                <div className='flex flex-wrap gap-x-8 gap-y-10 w-full pl-5'>
                     {filteredCourses.length > 0 ? (
                         filteredCourses.map((course) => (
                         <div 
                             key={course.id}
-                            className={`bg-slate-900 w-full sm:w-[calc(50%-1rem)] md:w-[calc(33.33%-7rem)]
-                             ${course.baseHeight} ${course.customHeight} rounded-3xl flex flex-col gap-y-2 justify-between items-center 
-                            hover:border-2 hover:scale-110 transition duration-1000 border-blue-900 `}> 
+                            className="bg-slate-900 w-full sm:w-[calc(50%-1rem)] md:w-[calc(33.33%-7rem)]
+                             h-fit rounded-3xl flex flex-col gap-y-2 justify-between items-center 
+                            hover:border-2 hover:scale-110 transition duration-1000 border-blue-900"> 
 
                             <div className='flex gap-y-2.5 flex-col'>
 
@@ -116,28 +108,27 @@ export default function CoursesSection () {
                             
                                 
                                 <div 
-                                    className='px-4.5 py-6.5'>
+                                    className='flex flex-col gap-y-4 px-4.5 py-5.5'>
                                     <p className='text-sm font-medium text-slate-200'>
                                     {course.description}</p>
+                                    
+                                    <div className='flex gap-5'>
+                                        <button 
+                                            className='bg-blue-600 cursor-pointer font-serif  text-slate-300 rounded-2xl w-32.5 h-10.5
+                                                flex items-center justify-center gap-2
+                                                hover:bg-gray-700 hover:text-gray-300  transition-colors duration-500'>
+                                                View More <View />
+                                        </button>
+                                        <button 
+                                            className='bg-blue-600 cursor-pointer  text-slate-300 rounded-2xl w-34.5 h-10.5
+                                                flex items-center justify-center gap-2
+                                                hover:bg-gray-700 hover:text-gray-300 transition-colors duration-500'>
+                                            APPLY NOW 
+                                        </button>
+                                    </div>
                                 </div>
                             </div> 
-                            
-                            <div 
-                                className='my-auto flex gap-x-6.5'>
-                                    
-                                <button 
-                                    className='bg-blue-600 cursor-pointer font-serif  text-slate-300 rounded-2xl w-32.5 h-10.5
-                                        flex items-center justify-center gap-2
-                                        hover:bg-gray-700 hover:text-gray-300  transition-colors duration-500'>
-                                    View More <View />
-                                </button>
-                                <button 
-                                    className='bg-blue-600 cursor-pointer  text-slate-300 rounded-2xl w-34.5 h-10.5
-                                        flex items-center justify-center gap-2
-                                        hover:bg-gray-700 hover:text-gray-300 transition-colors duration-500'>
-                                    APPLY NOW 
-                                </button>
-                            </div>    
+                                
                         </div>   
                     ))
                 ) : (
