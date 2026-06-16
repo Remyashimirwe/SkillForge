@@ -1,5 +1,8 @@
 @import 'tailwindcss';
 
+.icon{
+  display: flex;
+}
 @media(max-width:855px){
     .mon{
         display: none;
@@ -11,6 +14,9 @@
         display: flex;
         justify-content: space-between;
     }
+      .icon{
+      display:none;
+    }
 }
 @media(min-width:855px){
     .mon{
@@ -19,6 +25,7 @@
     .wa{
         display: none;
     }
+  
     
 }
 
@@ -391,3 +398,4 @@
     inset: -1px;
   }
 }
+
