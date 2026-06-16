@@ -19,11 +19,11 @@ function App() {
 
   return (
     <>
-      <div className='flex flex-col h-screen max-h-screen dark:bg-slate-800 dark:text-white transition-colors duration-500'>
+      <div className='flex flex-col h-screen max-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-800'>
         <Navbar/>
         <div className='flex flex-1 h-full overflow-hidden'>
           <Sidebar/>
-        <main className='bg-slate-50 py-12 dark:bg-gray-500 dark:text-white flex flex-1 justify-center overflow-y-auto'>
+        <main className=' py-12  flex flex-1 justify-center overflow-y-auto'>
           <Routes>
             <Route path='/' element = {<Home/>}></Route>
             <Route path='/about' element = {<About/>}></Route>

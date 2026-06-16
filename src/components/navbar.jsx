@@ -1,33 +1,48 @@
 import { Link } from "react-router-dom";
 import { Menu, X} from "lucide-react";
 import ThemeToggle from "./ThemeToggle";
-import { Component as Logo } from "lucide-react";
+import { Component as Logo, PanelLeftOpen, PanelLeftClose } from "lucide-react";
 import { useState } from "react";
 
 export default function Navbar (){
     const [isOpen, setIsOpen] = useState(false);
     const toggleMenu = () => {
         setIsOpen(!isOpen);
-}
+    }
+    const ToggleSideBar = (e) => {
+        e.preventDefault();
+        console.log("Sidebar Toggle button clicked")
+        // setIsOpen(!isOpen)
+    }
     return (
         <nav 
-        className="sticky top-0 bg-white border-b border-slate-100
-        flex items-center justify-between px-6 py-4 lg:px-14
-         dark:border-slate-800 dark:bg-slate-900 transition-all duration-500 z-50">
+        className="sticky top-0 border-b border-slate-200
+        flex items-center justify-between px-6 py-4 lg:px-14 transition-all duration-500 z-50">
 
-            <div className="flex items-center gap-2 font-sans font-bold text-xl dark:text-white ">
+            <div className="flex items-center gap-2 font-sans font-bold text-xl ">
                 <span className="bg-indigo-600 text-white p-1.5 rounded-lg"><Logo/></span>
                 <span>Jallen</span>
+
+            </div>
+            <div>
+                <button 
+                    onClick={ToggleSideBar}
+                    className="flex text-sm text-gray-900  font-semibold hover:font-bold hover:cursor-pointer md:hidden">
+                    {isOpen ? 
+                        <div className="flex items-center j gap-x-1.5"><PanelLeftClose/> Close Sidebar</div> : 
+                        <div className="flex items-center gap-x-1.5"><PanelLeftOpen/> Open Sidebar</div>
+                    }
+                </button>
             </div>
 
-            <ul className="hidden md:flex items-center gap-10 font-semibold text-slate-700 dark:text-slate-300 text-sm">
-                <li className="hover:text-indigo-600 dark:hover:text-white transition-colors">
+            <ul className="hidden md:flex items-center gap-10 font-semibold text-slate-700  text-sm">
+                <li className="text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white  transition-colors">
                     <Link to="/">Home </Link>
                 </li>
-                <li className="hover:text-indigo-600 dark:hover:text-white transition-colors">
+                <li className="text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white  transition-colors">
                     <Link to="/about">About</Link>
                 </li>
-                <li className="hover:text-indigo-600 dark:hover:text-whitetransition-colors">
+                <li className="text-slate-600 hover:text-slate-900 dark:text-slate-300 dark:hover:text-white  transition-colors">
                     <Link to="/services">Services</Link>
                 </li>
             </ul>
@@ -35,26 +50,27 @@ export default function Navbar (){
             <div className="flex items-center gap-3">
                 
                 <Link to="/login"
-                    className="text-md font-medium text-slate-600 hover:bg-slate-200 rounded-lg
-                     dark:hover:bg-slate-400 dark:text-slate-300 hover:text-indigo-600
-                     dark:hover:text-indigo-800 transition-colors px-4 py-2">
+                    className="hidden md:flex text-md font-medium text-slate-600 hover:text-slate-900  rounded-lg
+                      dark:text-slate-300 dark:hover:text-white
+                      transition-colors px-4 py-2">
                     Login</Link>
                 <Link to="/register"
-                    className="text-sm font-medium bg-indigo-600 hover:bg-indigo-700 text-white px-4 py-2.5
+                    className="hidden md:flex text-sm font-medium text-white px-4 py-2.5
+                        bg-indigo-600 hover:bg-indigo-700 dark:bg-indigo-500 dark:hover:bg-indigo-600
                     rounded-xl shadow-md shadow-indigo-600/20 transition-all">
                     Get started</Link>
-                <div className="h-7 w-0.5 bg-slate-700 dark:bg-slate-50 mx-1"></div>
+                <div className="hidden md:flex h-7 w-0.5   mx-1"></div>
                 <ThemeToggle/>
             </div>
 
-            <button className='flex justify-center items-center w-12 h-12 hover:cursor-pointer md:hidden rounded-full hover:bg-gray-500'
+            <button className='flex justify-center items-center w-12 h-12 hover:cursor-pointer md:hidden rounded-full '
                 onClick={toggleMenu}>
-                    {isOpen ? <X className='w-7 h-7 bg-orange-400'/> : <Menu className='w-7 h-7 bg-green-300'/>} 
+                    {isOpen ? <X className='w-7 h-7 '/> : <Menu className='w-7 h-7 '/>} 
             </button>
                 
                 {isOpen && (
                     <div className="absolute top-16 right-1 md:hidden sm:flex
-                 items-center px-3 rounded-sm w-40 bg-emerald-700">
+                 items-center px-3 rounded-sm w-40 ">
                     <ul className="py-2 flex flex-col gap-y-2">
                         <li>
                             <Link to="/"> Home </Link>

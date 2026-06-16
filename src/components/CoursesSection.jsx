@@ -60,25 +60,25 @@ export default function CoursesSection () {
 
 
     return(
-        <div className='bg-slate-400 dark:bg-amber-100/50 flex flex-col w-full items-center transition-all duration-500 py-8.5'>
+        <div className=' flex flex-col w-full items-center transition-all duration-500 py-8.5'>
             <div className='flex flex-col items-center w-full gap-y-12.5'>
                 <div className='w-full flex justify-center items-center'>
                         <div className='w-full flex justify-center items-center'>
-                            <h1 className='text-3xl dark:text-emerald-900 text-center font-bold'>Our Courses</h1>
+                            <h1 className='text-3xl text-center font-bold'>Our Courses</h1>
                         </div> 
                     <div className='flex px-10 w-full justify-end'>
                         <div 
-                            className='flex items-center border-2 border-blue-600 rounded-2xl overflow-hidden  bg-white/70 h-14'>
+                            className='flex items-center border-2  rounded-2xl overflow-hidden h-14'>
 
                             <div
-                                className='flex items-center text-white cursor-pointer bg-blue-600 h-full px-5'>
+                                className='flex items-center  cursor-pointer  h-full px-5'>
                                 <Search className='h-6 w-6 stroke-3' />  
                             </div>
                             <input 
                             type="text" placeholder='Search a course...'
                             value={searchInput}
                             onChange={(e)=> setSearchInput(e.target.value)}
-                            className='px-4 w-full h-full text-gray-700 focus:outline-none'
+                            className='px-4 w-full h-full  focus:outline-none'
                             />
                         </div>
                     </div>
@@ -89,40 +89,40 @@ export default function CoursesSection () {
                         filteredCourses.map((course) => (
                         <div 
                             key={course.id}
-                            className="bg-slate-900 w-full sm:w-[calc(50%-1rem)] md:w-[calc(33.33%-7rem)]
+                            className=" w-full sm:w-[calc(50%-1rem)] md:w-[calc(33.33%-7rem)]
                              h-fit rounded-3xl flex flex-col gap-y-2 justify-between items-center 
-                            hover:border-2 hover:scale-110 transition duration-1000 border-blue-900"> 
+                            hover:border-2 hover:scale-110 transition duration-1000 "> 
 
                             <div className='flex gap-y-2.5 flex-col'>
 
                                 <img src={course.image} alt={course.category} 
                                 className='rounded-t-2xl'/>
                             
-                                <h1 className='font-bold px-4.5 py-2.5 text-white text-xl'>
+                                <h1 className='font-bold px-4.5 py-2.5  text-xl'>
                                     {course.title}
                                 </h1>
 
-                                <span className='px-4.5 text-green-300/60 font-mono font-semibold leading-2.5'>
+                                <span className='px-4.5  font-mono font-semibold leading-2.5'>
                                     {course.category}
                                 </span>
                             
                                 
                                 <div 
                                     className='flex flex-col gap-y-4 px-4.5 py-5.5'>
-                                    <p className='text-sm font-medium text-slate-200'>
+                                    <p className='text-sm font-medium '>
                                     {course.description}</p>
                                     
                                     <div className='flex gap-5'>
                                         <button 
-                                            className='bg-blue-600 cursor-pointer font-serif  text-slate-300 rounded-2xl w-32.5 h-10.5
+                                            className=' cursor-pointer font-serif   rounded-2xl w-32.5 h-10.5
                                                 flex items-center justify-center gap-2
-                                                hover:bg-gray-700 hover:text-gray-300  transition-colors duration-500'>
+                                                  transition-colors duration-500'>
                                                 View More <View />
                                         </button>
                                         <button 
-                                            className='bg-blue-600 cursor-pointer  text-slate-300 rounded-2xl w-34.5 h-10.5
+                                            className=' cursor-pointer   rounded-2xl w-34.5 h-10.5
                                                 flex items-center justify-center gap-2
-                                                hover:bg-gray-700 hover:text-gray-300 transition-colors duration-500'>
+                                                  transition-colors duration-500'>
                                             APPLY NOW 
                                         </button>
                                     </div>
@@ -132,7 +132,7 @@ export default function CoursesSection () {
                         </div>   
                     ))
                 ) : (
-                    <div className='text-white text-xl py-10'>
+                    <div className=' text-xl py-10'>
                         no Courses match with "{searchInput}"
                     </div>
                 )

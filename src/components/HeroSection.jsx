@@ -1,30 +1,29 @@
+import { useState } from 'react';
 import Campus from '../assets/auca.jpg';
 import student from '../assets/image2.jfif';
 import library from '../assets/image3.jfif'
 export default function HeroSection (){
+    const [isOpen, setIsOpen] = useState(false)
     return (
         <section className='w-full flex flex-col items-center'>
-            <div className='relative h-80 md:h-112.5 w-full overflow-hidden rounded-full'>
+            <div className='h-80 md:h-112.5 w-full overflow-hidden rounded-full'>
                 <img src={Campus} alt="UoK Kigali Campus" 
-                className='h-full w-full object-cover object-center' />
+                className='h-full w-full object-cover object-center dark:brightness-[0.75] dark:contrast-[1.05]' />
 
-                {/* <h1 className=
-                    'absolute inset-0 h-fit w-fit m-auto bg-slate-200/70 font-semibold text-4xl py-3 px-4 text-pink-900'>
-                    AUCA Online Learning Portal</h1> */}
             </div>
             <div 
-            className='text-white w-4xl border border-slate-500/25 dark:border-slate-300 rounded-xl px-4 py-8 my-4 
+            className='w-4xl border border-gray-400  rounded-xl px-4 py-8 my-4 
                     flex flex-col gap-3 justify-center'>
                 <div className=''>
-                    <p className='text-slate-900 text-left dark:text-slate-50'>
+                    <p className=' text-left'>
                     Adventist University Central Africa is one of the leading private higher education institutions of learning in Rwanda. AUCA is a fully accredited and chartered University by the Government of the Republic of Rwanda. AUCA has two campuses: the main campus, located at KG 230 St road, near RDB Building, and the Masoro campus is located at KG 162 Avenue, near Evangelical Restoration Church (Kwa Masasu).
                 </p>
                 </div>
                 
-                <div className='w-full bg-gray-900'>
+                <div className='w-full '>
                     <div className='flex'>
-                        <div className='bg-red-700 flex flex-col w-1/2 shrink-0'>
-                            <div className='flex flex-col gap-y-4 px-6 pt-6 pb-6'>
+                        <div className=' flex flex-col w-1/2 shrink-0'>
+                            <div className='flex flex-col gap-y-4 bg-indigo-400 dark:bg-indigo-700/50 px-6 pt-6 pb-6'>
                                 <h1 className='font-bold text-lg'>Our vision</h1>
                                 <span className='text-left leading-relaxed'>
                                     Our vision is to be a pole of radiance and excellence nationally and internationally, with quality education, research and provision of innovative service to the community.
@@ -36,9 +35,9 @@ export default function HeroSection (){
                             </div>
                         </div>
 
-                        <div className='flex flex-col w-1/2'>
+                        <div className='flex  flex-col w-1/2'>
                             <div 
-                                className='flex flex-col gap-y-4 px-6 pt-6 pb-6'>
+                                className='flex bg-red-300 dark:bg-pink-400/50 flex-col gap-y-4 px-6 pt-6 pb-6'>
                                 <h1 className='font-bold text-right text-lg'>Our Mission and Motto</h1>
                                 <span className='text-right leading-relaxed'>
                                     Our mission is to provide quality higher education programmes that match the labour market and development needs of Rwanda, the region and the world. Our motto is Labour for the Future.
@@ -60,19 +59,19 @@ export default function HeroSection (){
                                     <div className='flex flex-col justify-center items-center gap-y-2'>
                                         <span className='font-bold text-3xl'>8K+</span>
                                         <p 
-                                        className='text-lg text-gray-300 max-w-37.5'>
+                                        className='text-lg  max-w-37.5'>
                                             Students as of 2025</p>
                                     </div>
                                     <div className='flex flex-col gap-y-2'>
                                         <span className='font-bold text-3xl'>9K+</span>
                                         <p 
-                                        className='text-lg text-gray-300 max-w-37.5'>
+                                        className='text-lg max-w-37.5'>
                                             Alumni</p>
                                     </div>
                                     <div className='flex flex-col gap-y-2'>
                                         <span className='font-bold text-3xl'>30+</span>
                                         <p 
-                                        className='text-lg text-gray-300 max-w-37.5'>
+                                        className='text-lg  max-w-37.5'>
                                             Nationalities</p>
                                     </div>
                                 </div>
@@ -93,7 +92,7 @@ export default function HeroSection (){
                                     <div className='flex flex-col gap-y-2'>
                                         <span className='font-bold text-3xl'>34</span>
                                         <p 
-                                        className='text-lg text-gray-300 max-w-37.5'>
+                                        className='text-lg  max-w-37.5'>
                                             Award Won</p>
                                     </div>
                                 </div>
@@ -106,7 +105,6 @@ export default function HeroSection (){
                 </div>
                 
             </div>
-            
         </section>
     )
 }
