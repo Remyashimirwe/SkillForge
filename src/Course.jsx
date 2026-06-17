@@ -1,5 +1,6 @@
 import { motion } from "framer-motion"
-import coursesImg from "./public/images/courses.png"
+import { Link } from "react-router-dom"
+import { Button } from "./components/ui/button"
 import webDesignImg from "./public/images/Web-Design-Courses-806x393.webp"
 import wordpressDevImg from "./public/images/WordPress-Web-Design-Development.webp"
 import softwareEngImg from "./public/images/pngtree-software-engineer-3d-icon-in-clean-design-isolated-on-white-background-png-image_20173911.png"
@@ -58,7 +59,7 @@ const STAGGER = {
                 className="relative"
               >
                 <img
-                  src={coursesImg}
+                  src="src/public/images/courses.png..webp"
                   alt="Students learning on laptops"
                   className="w-full h-120 sm:h-112 md:h-136 object-cover rounded-3xl"
                 />
@@ -92,6 +93,11 @@ const STAGGER = {
 
                         <h3 className="mt-4 text-xl font-semibold text-foreground">{course.title}</h3>
                         <p className="mt-4 text-base md:text-lg leading-7 text-muted-foreground">{course.description}</p>
+                        <div className="mt-6">
+                          <Button asChild size="sm" variant="outline" className="rounded-full hover:bg-orange-400 transition duration-300 px-4 py-2">
+                            <Link to="/lessons">View Course</Link>
+                          </Button>
+                        </div>
                       </motion.div>
                     )
                   })}

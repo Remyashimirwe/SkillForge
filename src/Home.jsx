@@ -1,5 +1,6 @@
 import {CheckCircle2 } from "lucide-react";
 import { motion } from "framer-motion";
+import { Link } from "react-router-dom";
 import { Button } from "./components/ui/button";
 import {SiGoogle,SiApple,SiSlack,SiMeta,SiSalesforce} from "react-icons/si";
 const FADE_UP = {
@@ -47,8 +48,8 @@ function Hero(){
                   <Button size="lg" className="rounded-full px-8 text-base h-14 hover:bg-muted transition-all">
                     Get Started
                   </Button>
-                  <Button size="lg" variant="outline" className="rounded-full px-8 text-base h-14 hover:bg-muted transition-all">
-                    View Courses
+                  <Button asChild size="lg" variant="outline" className="rounded-full px-8 text-base h-14 hover:bg-muted transition-all">
+                    <Link to="/course">View Courses</Link>
                   </Button>
                 </motion.div>
                 
