@@ -1,6 +1,6 @@
 import Navbar from './components/navbar';
 import Sidebar from './components/sidebar';
-import { Route, Routes } from 'react-router-dom';
+import { Route, Routes, useLocation } from 'react-router-dom';
 import Home from './pages/home';
 import About from './pages/about';
 import Services from './pages/services';
@@ -16,14 +16,16 @@ import Support from './pages/support';
 import Privacy from './pages/privacy';
 
 function App() {
-  
+  const location = useLocation()
+  const hideSidebarRoutes = ['/login', '/register'];
+  const shouldHideSidebar = hideSidebarRoutes.includes(location.pathname)
 
   return (
     <>
       <div className='flex flex-col h-screen max-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-800'>
         <Navbar/>
         <div className='flex flex-1 h-full overflow-hidden'>
-          <Sidebar/>
+          {!shouldHideSidebar && <Sidebar/>}
         <main className=' py-12  flex flex-1 justify-center overflow-y-auto'>
           <Routes>
             <Route path='/' element = {<Home/>}></Route>
