@@ -45,10 +45,10 @@ function Hero(){
                 </motion.p>
                 
                 <motion.div variants={FADE_UP} className="flex flex-col sm:flex-row gap-4">
-                  <Button size="lg" className="rounded-full px-8 text-base h-14 hover:bg-muted transition-all">
-                    Get Started
+                  <Button size="lg" className="rounded-full px-8 text-base h-14 transition-transform duration-200 ease-out hover:-translate-y-1 hover:scale-[1.02]">
+                    <Link to="/login">Get Started</Link>
                   </Button>
-                  <Button asChild size="lg" variant="outline" className="rounded-full px-8 text-base h-14 hover:bg-muted transition-all">
+                  <Button asChild size="lg" variant="outline" className="rounded-full px-8 text-base h-14 transition-transform duration-200 ease-out hover:-translate-y-1 hover:scale-[1.02] hover:bg-muted">
                     <Link to="/course">View Courses</Link>
                   </Button>
                 </motion.div>

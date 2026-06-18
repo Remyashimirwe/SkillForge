@@ -92,7 +92,7 @@ function Navbar() {
 
             {/* Get Started Button (Desktop) */}
             <Link 
-              to="/course"
+              to="/login"
               className="hidden md:inline-flex px-5 py-2 rounded-full bg-secondary text-secondary-foreground font-semibold hover:shadow-lg transition-all hover:scale-105 active:scale-95"
             >
               Get Started
