@@ -5,6 +5,7 @@ import Home from './pages/home';
 import About from './pages/about';
 import Services from './pages/services';
 import Login from './pages/login';
+import Course from './pages/course';
 import Register from './pages/register';
 import Profile from './pages/profile';
 import Message from './pages/messages'
@@ -30,6 +31,7 @@ function App() {
             <Route path='/services' element = {<Services/>}></Route>
             <Route path='/login' element = {<Login/>}></Route>
             <Route path='/register' element = {<Register/>}></Route>
+            <Route path='/course/:title' element = {<Course/>}></Route>
             <Route path='/profile' element = {<Profile/>}></Route>
             <Route path='/messages' element = {<Message/>}></Route>
             <Route path='/communities' element = {<Communities/>}></Route>

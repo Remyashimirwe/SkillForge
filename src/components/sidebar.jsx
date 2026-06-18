@@ -14,7 +14,7 @@ export default function Sidebar (){
                         ${isOpen ? 'w-60 rounded-3xl' : 'w-24 px-2'} `}>
                         <button onClick={ToggleSideBar}
                         className="absolute top-3  right-0 cursor-pointer text-white p-1 mx-2 bg-indigo-600 rounded-full ">
-                            <ChevronLeft className={` transition-transform duration-900 ${isOpen ? 'rotate-180' : ''}`}/></button>
+                            <ChevronRight className={` transition-transform duration-900 ${isOpen ? 'rotate-180' : ''}`}/></button>
             
                     <ul className="hidden text-md my-14 mx-5 md:flex flex-col gap-2.5 font-sans font-normal">
                         <li>

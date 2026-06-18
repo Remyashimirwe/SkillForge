@@ -3,7 +3,8 @@ import Campus from '../assets/auca.jpg';
 import student from '../assets/image2.jfif';
 import library from '../assets/image3.jfif'
 export default function HeroSection (){
-    const [isOpen, setIsOpen] = useState(false)
+    const [isOpen, setIsOpen] = useState(true);
+
     return (
         <section className='w-full flex flex-col items-center'>
             <div className='h-80 md:h-112.5 w-full overflow-hidden rounded-full'>
@@ -12,8 +13,8 @@ export default function HeroSection (){
 
             </div>
             <div 
-            className='w-4xl border border-gray-400  rounded-xl px-4 py-8 my-4 
-                    flex flex-col gap-3 justify-center'>
+            className='border border-gray-400 rounded-xl w-4xl px-4 py-8 my-4  
+                        flex flex-col gap-3 justify-center'>
                 <div className=''>
                     <p className=' text-left'>
                     Adventist University Central Africa is one of the leading private higher education institutions of learning in Rwanda. AUCA is a fully accredited and chartered University by the Government of the Republic of Rwanda. AUCA has two campuses: the main campus, located at KG 230 St road, near RDB Building, and the Masoro campus is located at KG 162 Avenue, near Evangelical Restoration Church (Kwa Masasu).
@@ -80,13 +81,13 @@ export default function HeroSection (){
                                     <div className='flex flex-col gap-y-2 items-center'>
                                         <span className='font-bold text-3xl'>Over 700+</span>
                                         <p 
-                                        className='text-md text-gray-300'>
+                                        className='text-md '>
                                             International Students</p>
                                     </div>
                                     <div className='flex flex-col gap-y-2'>
                                         <span className='font-bold text-3xl'>28</span>
                                         <p 
-                                        className='text-lg text-gray-300 max-w-37.5'>
+                                        className='text-lg  max-w-37.5'>
                                             Academic Programmes</p>
                                     </div>
                                     <div className='flex flex-col gap-y-2'>

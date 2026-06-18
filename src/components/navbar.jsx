@@ -9,11 +9,7 @@ export default function Navbar (){
     const toggleMenu = () => {
         setIsOpen(!isOpen);
     }
-    const ToggleSideBar = (e) => {
-        e.preventDefault();
-        console.log("Sidebar Toggle button clicked")
-        // setIsOpen(!isOpen)
-    }
+    
     return (
         <nav 
         className="sticky top-0 border-b border-slate-200
@@ -23,16 +19,6 @@ export default function Navbar (){
                 <span className="bg-indigo-600 text-white p-1.5 rounded-lg"><Logo/></span>
                 <span>Jallen</span>
 
-            </div>
-            <div>
-                <button 
-                    onClick={ToggleSideBar}
-                    className="flex text-sm text-gray-900  font-semibold hover:font-bold hover:cursor-pointer md:hidden">
-                    {isOpen ? 
-                        <div className="flex items-center j gap-x-1.5"><PanelLeftClose/> Close Sidebar</div> : 
-                        <div className="flex items-center gap-x-1.5"><PanelLeftOpen/> Open Sidebar</div>
-                    }
-                </button>
             </div>
 
             <ul className="hidden md:flex items-center gap-10 font-semibold text-slate-700  text-sm">
