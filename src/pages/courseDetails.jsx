@@ -1,20 +1,47 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { useNavigate, useLocation } from "react-router-dom";
 
 function Course() {
     const location = useLocation();
     const navigate = useNavigate();
+
     const course = location.state?.Courses;
 
-    useEffect( () => {
-        if(!course){
-            navigate('/course');
-        }
-    },[course, navigate]);
     if (!course){
-        return null
+        return null;
     }
+
+    const storageKey = `course_spots_${course?.id}`;
+
+    const [spotsCount, setSpotsCount] = useState(() => {
+        const data = localStorage.getItem(storageKey);
+        if(data) {
+            return JSON.parse(data);
+        }
+        return course
+    });
+
+    useEffect(() => {
+        if(spotsCount){
+            localStorage.setItem(storageKey, JSON.stringify(spotsCount));
+            console.log(spotsCount)
+        }
+    },[spotsCount, storageKey])
+
+    function spotCountHandler ()  { 
+        
+        setSpotsCount(prev => {
+            if(!prev) return prev;
+            return { 
+                ...prev,
+                spotsLeft: prev.spotsLeft - 1
+            };
+            
+        });
+
+    };
+
     
     return(
         <div className="flex flex-col gap-y-9 min-h-screen p-4 md:p-8 w-full ">
@@ -56,10 +83,13 @@ function Course() {
                             <span className="text-left text-3xl font-bold leading-6.5 text-slate-700">
                                 {course.price}   
                             </span>
-                            <span className="bg-orange-300/40 font-medium rounded-md text-sm text-amber-500 px-2.5 py-1">{course.spotsLeft} spots left</span>
+                            <span className="bg-orange-300/40 font-medium rounded-md text-sm text-amber-500 px-2.5 py-1">{spotsCount.spotsLeft} spots left</span>
                         </div>
-                        <button className="max-w-60 h-11 cursor-pointer hover:bg-emerald-700 bg-emerald-600 text-slate-50 font-medium rounded-full transition-colors duration-600">
-                            APPLY
+                        <button
+                        disabled={spotsCount.spotsLeft <= 0}
+                        onClick={spotCountHandler}
+                         className="max-w-60 h-11 cursor-pointer hover:bg-emerald-700 bg-emerald-600 text-slate-50 font-medium rounded-full transition-colors duration-600">
+                            {spotsCount.spotsLeft > 0 ? 'APLLY' : 'FULL'}
                         </button>
                     </div>
                     <div className="flex flex-col gap-y-4">
