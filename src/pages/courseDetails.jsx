@@ -44,8 +44,8 @@ function Course() {
 
     
     return(
-        <div className="flex flex-col gap-y-9 min-h-screen p-4 md:p-8 w-full ">
-            <div className="h-64 md:h-80 w-full">
+        <div className="flex flex-col gap-y-9 min-h-screen w-full ">
+            <div className="h-64 md:h-80 w-full ">
                 <img src={course.image} alt={course.title} 
                     className="h-full w-full object-cover rounded-md object-center"/>
                 
@@ -77,7 +77,7 @@ function Course() {
                     </ul>
                 </div>
                 </div>
-                <div className="w-1/4 h-fit flex flex-col gap-y-10 rounded-2xl border-2 border-green-300  shadow-xl shadow-gray-300 py-6 px-8 ">
+                <div className="w-1/4 h-fit flex flex-col gap-y-7 p-5 rounded-2xl border-2 border-green-300  shadow-xl shadow-gray-300 ">
                     <div className="flex flex-col gap-y-8">
                         <div className="flex items-center justify-between">
                             <span className="text-left text-3xl font-bold leading-6.5 text-slate-700">
@@ -85,14 +85,9 @@ function Course() {
                             </span>
                             <span className="bg-orange-300/40 font-medium rounded-md text-sm text-amber-500 px-2.5 py-1">{spotsCount.spotsLeft} spots left</span>
                         </div>
-                        <button
-                        disabled={spotsCount.spotsLeft <= 0}
-                        onClick={spotCountHandler}
-                         className="max-w-60 h-11 cursor-pointer hover:bg-emerald-700 bg-emerald-600 text-slate-50 font-medium rounded-full transition-colors duration-600">
-                            {spotsCount.spotsLeft > 0 ? 'APLLY' : 'FULL'}
-                        </button>
+                        
                     </div>
-                    <div className="flex flex-col gap-y-4">
+                    <div className=" flex flex-col gap-y-4">
                         <div className="flex items-center justify-between">
                             <span className="font-semibold text-slate-700">Start Date</span>
                             <span className="bg-blue-200/20 px-2 p-1.5 rounded font-semibold text-sm text-emerald-500 ">Monday, 6 July 2026</span>
@@ -110,6 +105,17 @@ function Course() {
                             </span>
                         </div>
                         <hr className="border-slate-300 w-full"/>
+                        <button
+                            disabled={spotsCount.spotsLeft <= 0}
+                            onClick={spotCountHandler}
+                            className={`w-full h-11 text-slate-50 font-medium rounded-full transition-colors duration-600
+                                ${spotsCount.spotsLeft > 0 ? 
+                                    'cursor-pointer hover:bg-emerald-700 bg-emerald-600' : 
+                                    'bg-red-400  cursor-not-allowed '
+                                }
+                            `}>
+                                {spotsCount.spotsLeft > 0 ? 'BOOK' : 'FULL'}
+                        </button>
                     </div>
                     <div className="w-full">
                         
