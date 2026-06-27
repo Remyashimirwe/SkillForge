@@ -42,20 +42,20 @@ export default function CoursesSection () {
                     </div>
                     
                 </div>
-                <div className='flex flex-wrap gap-x-8 gap-y-10 w-full pl-5'>
+                <div className='flex flex-wrap gap-x-8 gap-y-10 w-full pr-5 pl-5 md:pr-0'>
                     {filteredCourses.length > 0 ? (
                         filteredCourses.map((course) => (
                         <div 
                             key={course.id}
-                            className=" w-full sm:w-[calc(50%-1rem)] md:w-[calc(33.33%-7rem)]
-                            bg-slate-900  border-2
+                            className=" sm:w-[calc(50%-1rem)] md:w-[calc(33.33%-7rem)]
+                            bg-slate-900  
                              h-fit rounded-3xl flex flex-col gap-y-2 justify-between items-center 
                             hover:border-2 hover:scale-110 transition duration-1000 "> 
 
                             <div className='flex gap-y-2.5 flex-col'>
 
                                 <img src={course.image} alt={course.category} 
-                                className='rounded-t-2xl'/>
+                                className='rounded-t-2xl brightness-95'/>
                             
                                 <h1 className='font-bold px-4.5 py-2.5 text-slate-200 text-xl'>
                                     {course.title}
