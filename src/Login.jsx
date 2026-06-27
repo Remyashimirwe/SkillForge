@@ -1,6 +1,9 @@
 import { Link } from "react-router-dom"
 import { motion } from "framer-motion"
+import { useEffect, useState } from "react"
+import axios  from "axios" 
 
+const API_BASE = 'http://localhost:4000';
 function Login() {
   const FADE_UP = {
     hidden: { opacity: 0, y: 36 },
@@ -15,7 +18,37 @@ function Login() {
     hidden: {},
     visible: { transition: { staggerChildren: 0.12 } }
   }
+  const [user , setUser] = useState({
+    email : "",
+    password : ""
+  })
+  const [inputs , setInputs] = useState({
+    email : "",
+    password : ""
+  })
+   
+  useEffect(()=>{
+     axios 
+     .post("/api/users/login" , user)
+     .then((res) => console.log(res))
+     .catch((err) => console.log(err))
+  },[user]);
+ const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs((values) => ({ ...values, [name]: value }));
+  };
+   const handleSubmit = (event) => {
+    event.preventDefault();
 
+    axios
+      .post(`${API_BASE}/api/users`, inputs)
+      .then((res) => {
+        setUser((prev) => [...prev, res.data]);
+        setInputs({ username: '', password: '' });
+      })
+      .catch((err) => console.error(err));
+  };
   return (
     <motion.div
       variants={STAGGER}
@@ -35,12 +68,14 @@ function Login() {
         <motion.form
           variants={STAGGER}
           className="flex flex-col gap-4"
-          onSubmit={(event) => event.preventDefault()}
+          onSubmit={handleSubmit}
         >
           <motion.input
             variants={FADE_UP}
             className="w-full rounded-2xl border border-orange-200 bg-orange-50/80 px-4 py-3 text-sm text-orange-900 outline-none transition focus:border-orange-400 focus:ring-2 focus:ring-orange-200"
             type="email"
+            value={inputs.email}
+            onChange={handleChange}
             placeholder="Enter your email"
             autoComplete="email"
           />
@@ -49,6 +84,8 @@ function Login() {
             variants={FADE_UP}
             className="w-full rounded-2xl border border-orange-200 bg-orange-50/80 px-4 py-3 text-sm text-orange-900 outline-none transition focus:border-orange-400 focus:ring-2 focus:ring-orange-200"
             type="password"
+            value={inputs.password}
+            onChange={handleChange}
             placeholder="Enter your password"
             autoComplete="current-password"
           />
