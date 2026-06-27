@@ -25,7 +25,6 @@ function Course() {
     useEffect(() => {
         if(spotsCount){
             localStorage.setItem(storageKey, JSON.stringify(spotsCount));
-            console.log(spotsCount)
         }
     },[spotsCount, storageKey])
 
@@ -45,12 +44,12 @@ function Course() {
     
     return(
         <div className="flex flex-col gap-y-9 min-h-screen w-full ">
-            <div className="h-64 md:h-80 w-full ">
+            <div className="relative h-64 md:h-80 w-full ">
                 <img src={course.image} alt={course.title} 
                     className="h-full w-full object-cover rounded-md object-center"/>
-                
+                <span className="absolute bottom-10 md:right-36 right-10 text-xl md:text-4xl text-slate-900 bg-white rounded-xl px-3 py-2 font-bold">{course.title}</span>
             </div>
-            <div className="flex flex-row gap-x-20 justify-center ">
+            <div className="flex flex-wrap md:flex-row gap-x-20 gap-y-9 justify-center ">
                 <div className="flex flex-col gap-y-10 w-3xl">
                     <div className="flex flex-col gap-y-6 rounded-2xl border border-slate-200 shadow-xl shadow-gray-300 py-6 px-8 ">
                         <h1 className="text-2xl font-bold text-slate-700">
@@ -77,7 +76,7 @@ function Course() {
                     </ul>
                 </div>
                 </div>
-                <div className="w-1/4 h-fit flex flex-col gap-y-7 p-5 rounded-2xl border-2 border-green-300  shadow-xl shadow-gray-300 ">
+                <div className="w-sm md:w-1/4 h-fit flex flex-col gap-y-7 p-5 rounded-2xl border-2 border-green-300  shadow-xl shadow-gray-300 mb-3">
                     <div className="flex flex-col gap-y-8">
                         <div className="flex items-center justify-between">
                             <span className="text-left text-3xl font-bold leading-6.5 text-slate-700">

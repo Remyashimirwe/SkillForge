@@ -3,7 +3,6 @@ import Campus from '../assets/auca.jpg';
 import student from '../assets/image2.jfif';
 import library from '../assets/image3.jfif'
 export default function HeroSection (){
-    const [isOpen, setIsOpen] = useState(true);
 
     return (
         <section className='w-full flex flex-col items-center'>

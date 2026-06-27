@@ -14,6 +14,7 @@ import Tasks from './pages/tasks';
 import Settings from './pages/settings';
 import Support from './pages/support';
 import Privacy from './pages/privacy';
+import { Dashboard } from './pages/lessonDashboard';
 
 function App() {
   const location = useLocation()
@@ -41,6 +42,7 @@ function App() {
             <Route path='/settings' element = {<Settings/>}></Route>
             <Route path='/support' element = {<Support/>}></Route>
             <Route path='/privacy' element = {<Privacy/>}></Route>
+            <Route path= '/dashboard' element = {<Dashboard/>}></Route>
           </Routes>
         </main>
       </div>
