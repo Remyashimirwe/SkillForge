@@ -1,9 +1,9 @@
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { motion } from "framer-motion"
-import { useEffect, useState } from "react"
-import axios  from "axios" 
+import { useState } from "react"
+import axios from "axios"
 
-const API_BASE = 'http://localhost:4000';
+const API_BASE = 'http://localhost:4000/api/users'
 function Login() {
   const FADE_UP = {
     hidden: { opacity: 0, y: 36 },
@@ -18,36 +18,31 @@ function Login() {
     hidden: {},
     visible: { transition: { staggerChildren: 0.12 } }
   }
-  const [user , setUser] = useState({
-    email : "",
-    password : ""
+
+  const [inputs, setInputs] = useState({
+    email: "",
+    password: ""
   })
-  const [inputs , setInputs] = useState({
-    email : "",
-    password : ""
-  })
-   
-  useEffect(()=>{
-     axios 
-     .post("/api/users/login" , user)
-     .then((res) => console.log(res))
-     .catch((err) => console.log(err))
-  },[user]);
- const handleChange = (event) => {
+  const [message, setMessage] = useState(null)
+  const navigate = useNavigate()
+
+  const handleChange = (event) => {
     const name = event.target.name;
     const value = event.target.value;
     setInputs((values) => ({ ...values, [name]: value }));
   };
-   const handleSubmit = (event) => {
+
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    axios
-      .post(`${API_BASE}/api/users`, inputs)
-      .then((res) => {
-        setUser((prev) => [...prev, res.data]);
-        setInputs({ username: '', password: '' });
-      })
-      .catch((err) => console.error(err));
+    try {
+      const res = await axios.post(`${API_BASE}/login`, inputs)
+      setMessage(res.data.msg || "Login successful")
+      navigate("/home")
+    } catch (err) {
+      setMessage(err.response?.data?.msg || "Login failed")
+      console.error(err)
+    }
   };
   return (
     <motion.div
@@ -74,6 +69,7 @@ function Login() {
             variants={FADE_UP}
             className="w-full rounded-2xl border border-orange-200 bg-orange-50/80 px-4 py-3 text-sm text-orange-900 outline-none transition focus:border-orange-400 focus:ring-2 focus:ring-orange-200"
             type="email"
+            name="email"
             value={inputs.email}
             onChange={handleChange}
             placeholder="Enter your email"
@@ -84,6 +80,7 @@ function Login() {
             variants={FADE_UP}
             className="w-full rounded-2xl border border-orange-200 bg-orange-50/80 px-4 py-3 text-sm text-orange-900 outline-none transition focus:border-orange-400 focus:ring-2 focus:ring-orange-200"
             type="password"
+            name="password"
             value={inputs.password}
             onChange={handleChange}
             placeholder="Enter your password"

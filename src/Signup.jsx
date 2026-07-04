@@ -1,10 +1,42 @@
 import { motion } from "framer-motion"
-import { Link } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
+import { useState } from "react"
+import axios from "axios"
+
+const API_BASE = 'http://localhost:4000/api/users'
 
 function Signup() {
   const FORM_ANIM = {
     hidden: { opacity: 0, y: 36 },
     visible: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } }
+  }
+
+  const [inputs, setInputs] = useState({
+    username: "",
+    email: "",
+    password: ""
+  })
+  const [message, setMessage] = useState(null)
+  const navigate = useNavigate()
+
+  const handleChange = (event) => {
+    const name = event.target.name;
+    const value = event.target.value;
+    setInputs((values) => ({ ...values, [name]: value }));
+  }
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+
+    try {
+      const res = await axios.post(`${API_BASE}/register`, inputs)
+      setMessage(res.data.msg || "Signup successful")
+      setInputs({ username: "", email: "", password: "" })
+      navigate("/login")
+    } catch (err) {
+      setMessage(err.response?.data?.msg || "Signup failed")
+      console.error(err)
+    }
   }
 
   return (
@@ -23,11 +55,14 @@ function Signup() {
           <p className="mt-2 text-sm text-orange-600">Join SkillForge and start learning.</p>
         </div>
 
-        <form className="flex flex-col gap-4" onSubmit={(event) => event.preventDefault()}>
+        <form className="flex flex-col gap-4" onSubmit={handleSubmit}>
           <motion.input
             variants={FORM_ANIM}
             className="w-full rounded-2xl border border-orange-200 bg-orange-50/80 px-4 py-3 text-sm text-orange-900 outline-none transition focus:border-orange-400 focus:ring-2 focus:ring-orange-200"
             type="text"
+            name="username"
+            value={inputs.username}
+            onChange={handleChange}
             placeholder="Full name"
             autoComplete="name"
           />
@@ -36,6 +71,9 @@ function Signup() {
             variants={FORM_ANIM}
             className="w-full rounded-2xl border border-orange-200 bg-orange-50/80 px-4 py-3 text-sm text-orange-900 outline-none transition focus:border-orange-400 focus:ring-2 focus:ring-orange-200"
             type="email"
+            name="email"
+            value={inputs.email}
+            onChange={handleChange}
             placeholder="Email address"
             autoComplete="email"
           />
@@ -44,6 +82,9 @@ function Signup() {
             variants={FORM_ANIM}
             className="w-full rounded-2xl border border-orange-200 bg-orange-50/80 px-4 py-3 text-sm text-orange-900 outline-none transition focus:border-orange-400 focus:ring-2 focus:ring-orange-200"
             type="password"
+            name="password"
+            value={inputs.password}
+            onChange={handleChange}
             placeholder="Create a password"
             autoComplete="new-password"
           />
@@ -56,6 +97,10 @@ function Signup() {
           >
             Sign Up
           </motion.button>
+
+          {message && (
+            <p className="text-center text-sm text-orange-700">{message}</p>
+          )}
 
           <motion.p variants={FORM_ANIM} className="mt-4 text-center text-sm text-orange-700">
             Already have an account?{' '}
