@@ -18,7 +18,7 @@ function Login (){
                 email,
                 password
             });
-            if(data.error) {
+            if(data.error) { 
                 toast.error(data.error)
             } else {
                 setData({});
