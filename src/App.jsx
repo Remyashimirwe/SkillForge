@@ -15,6 +15,11 @@ import Settings from './pages/settings';
 import Support from './pages/support';
 import Privacy from './pages/privacy';
 import { Dashboard } from './pages/lessonDashboard';
+import axios from 'axios';
+import { Toaster } from 'react-hot-toast'; //for error/success Notification
+
+axios.defaults.baseURL= 'http://localhost:5000'; // PORT server
+axios.defaults.withCredentials= true;  // give all credentrials to connect to that server port
 
 function App() {
   const location = useLocation()
@@ -25,6 +30,7 @@ function App() {
     <>
       <div className='flex flex-col h-screen max-h-screen bg-white text-slate-900 dark:bg-slate-950 dark:text-slate-200 transition-colors duration-800'>
         <Navbar/>
+        <Toaster position='bottom-right' toastOptions={{duration: 2000}} />
         <div className='flex flex-1 h-full overflow-hidden'>
           {!shouldHideSidebar && <Sidebar/>}
         <main className=' py-12  flex flex-1 justify-center overflow-y-auto'>
