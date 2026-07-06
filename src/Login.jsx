@@ -3,7 +3,7 @@ import { motion } from "framer-motion"
 import { useState } from "react"
 import axios from "axios"
 
-const API_BASE = 'http://localhost:4000/api/users'
+const API_BASE = 'http://localhost:4000'
 function Login() {
   const FADE_UP = {
     hidden: { opacity: 0, y: 36 },
@@ -36,7 +36,7 @@ function Login() {
     event.preventDefault();
 
     try {
-      const res = await axios.post(`${API_BASE}/login`, inputs)
+      const res = await axios.post(`${API_BASE}`, inputs)
       setMessage(res.data.msg || "Login successful")
       navigate("/home")
     } catch (err) {

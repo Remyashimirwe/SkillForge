@@ -13,6 +13,7 @@
     "@radix-ui/react-slot": "^1.2.5",
     "@tailwindcss/vite": "^4.3.0",
     "axios": "^1.18.1",
+    "bcryptjs": "^3.0.3",
     "class-variance-authority": "^0.7.1",
     "cors": "^2.8.6",
     "css": "^3.0.0",
