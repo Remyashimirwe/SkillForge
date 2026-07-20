@@ -3,7 +3,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { useState } from "react"
 import axios from "axios"
 
-const API_BASE = 'http://localhost:4000/api/users'
+const API_BASE = 'http://localhost:4000'
 
 function Signup() {
   const FORM_ANIM = {
@@ -29,7 +29,7 @@ function Signup() {
     event.preventDefault();
 
     try {
-      const res = await axios.post(`${API_BASE}/register`, inputs)
+      const res = await axios.post(`${API_BASE}/api/users/register`, inputs)
       setMessage(res.data.msg || "Signup successful")
       setInputs({ username: "", email: "", password: "" })
       navigate("/login")
@@ -97,7 +97,6 @@ function Signup() {
           >
             Sign Up
           </motion.button>
-
           {message && (
             <p className="text-center text-sm text-orange-700">{message}</p>
           )}

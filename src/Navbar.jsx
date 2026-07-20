@@ -66,7 +66,6 @@ function Navbar() {
             {[
               { name: "Home", path: "/home" },
               { name: "About", path: "/about" },
-              { name: "Courses", path: "/course" },
               { name: "Services", path: "/services" }
             ].map((item) => (
               <li key={item.name}>
@@ -148,7 +147,7 @@ function Navbar() {
 
             {/* Mobile CTA */}
             <Link 
-              to="/course"
+              to="/login"
               className="w-full px-5 py-3 rounded-full bg-primary text-primary-foreground font-semibold text-center hover:shadow-lg transition-all hover:scale-105 active:scale-95 mb-4"
               onClick={() => setIsOpen(false)}
             >

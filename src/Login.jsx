@@ -36,11 +36,11 @@ function Login() {
     event.preventDefault();
 
     try {
-      const res = await axios.post(`${API_BASE}`, inputs)
-      setMessage(res.data.msg || "Login successful")
+      const res = await axios.post(`${API_BASE}/api/users/login`, inputs)
+      setMessage(res.data.message || "Login successful")
       navigate("/home")
     } catch (err) {
-      setMessage(err.response?.data?.msg || "Login failed")
+      alert(err.response?.data?.message || "Login failed")
       console.error(err)
     }
   };

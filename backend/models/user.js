@@ -1,4 +1,3 @@
-const { User } = require("lucide-react");
 const mongoose = require("mongoose");
 
 const userSchema = new mongoose.Schema(
@@ -25,4 +24,4 @@ const userSchema = new mongoose.Schema(
   }
 );
 
-module.exports = User
+module.exports = mongoose.model("User", userSchema);
