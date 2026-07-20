@@ -2,6 +2,7 @@ import { Link, useNavigate } from "react-router-dom"
 import { motion } from "framer-motion"
 import { useState } from "react"
 import axios from "axios"
+import { useAuth } from "./AuthContext"
 
 const API_BASE = 'http://localhost:4000'
 function Login() {
@@ -25,6 +26,7 @@ function Login() {
   })
   const [message, setMessage] = useState(null)
   const navigate = useNavigate()
+  const { login } = useAuth()
 
   const handleChange = (event) => {
     const name = event.target.name;
@@ -37,10 +39,16 @@ function Login() {
 
     try {
       const res = await axios.post(`${API_BASE}/api/users/login`, inputs)
-      setMessage(res.data.message || "Login successful")
+      const { token, user } = res.data;
+      if (!token) {
+        throw new Error("Login response did not include a token.");
+      }
+
+      login(token, user)
+      setMessage("Login successful")
       navigate("/home")
     } catch (err) {
-      alert(err.response?.data?.message || "Login failed")
+      alert(err.response?.data?.message || err.message || "Login failed")
       console.error(err)
     }
   };

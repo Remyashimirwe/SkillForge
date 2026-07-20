@@ -1,6 +1,7 @@
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { useState, useEffect } from "react";
 import { Sun, Moon, Menu, X } from "lucide-react";
+import { useAuth } from "./AuthContext";
 
 function Navbar() {
   const [scrolled, setScrolled] = useState(false);
@@ -8,6 +9,14 @@ function Navbar() {
   const [darkMode, setDarkMode] = useState(() => {
     return localStorage.getItem('darkMode') === 'true';
   });
+  const navigate = useNavigate();
+  const { isAuthenticated, logout } = useAuth();
+
+  const handleLogout = () => {
+    logout();
+    navigate("/");
+  };
+
 
   useEffect(() => {
     if (darkMode) {
@@ -55,7 +64,7 @@ function Navbar() {
       >
         <nav className="container mx-auto max-w-7xl px-4 md:px-6 h-full flex justify-between items-center">
           {/* Logo */}
-          <Link to="/home" className="flex items-center gap-2">
+          <Link to={isAuthenticated ? "/home" : "/"} className="flex items-center gap-2">
             <h1 className="text-2xl font-bold text-white">
               SkillForge
             </h1>
@@ -66,7 +75,8 @@ function Navbar() {
             {[
               { name: "Home", path: "/home" },
               { name: "About", path: "/about" },
-              { name: "Services", path: "/services" }
+              { name: "Services", path: "/services" },
+              ...(isAuthenticated ? [{ name: "Process", path: "/process" }] : []),
             ].map((item) => (
               <li key={item.name}>
                 <Link 
@@ -89,13 +99,29 @@ function Navbar() {
               {darkMode ? <Sun size={20} className="text-white" /> : <Moon size={20} className="text-white" />}
             </button>
 
-            {/* Get Started Button (Desktop) */}
-            <Link 
-              to="/login"
-              className="hidden md:inline-flex px-5 py-2 rounded-full bg-secondary text-secondary-foreground font-semibold hover:shadow-lg transition-all hover:scale-105 active:scale-95"
-            >
-              Get Started
-            </Link>
+            {isAuthenticated ? (
+              <>
+                <Link 
+                  to="/home"
+                  className="hidden md:inline-flex px-5 py-2 rounded-full bg-secondary text-secondary-foreground font-semibold hover:shadow-lg transition-all hover:scale-105 active:scale-95"
+                >
+                  Dashboard
+                </Link>
+                <button
+                  onClick={handleLogout}
+                  className="hidden md:inline-flex px-5 py-2 rounded-full bg-white/10 text-white font-semibold hover:bg-white/20 transition-all hover:scale-105 active:scale-95"
+                >
+                  Logout
+                </button>
+              </>
+            ) : (
+              <Link 
+                to="/login"
+                className="hidden md:inline-flex px-5 py-2 rounded-full bg-secondary text-secondary-foreground font-semibold hover:shadow-lg transition-all hover:scale-105 active:scale-95"
+              >
+                Get Started
+              </Link>
+            )}
 
             <Menu 
               className="md:hidden cursor-pointer text-white hover:text-white/80 transition-colors" 
@@ -131,7 +157,8 @@ function Navbar() {
                 { name: "Home", path: "/home" },
                 { name: "About", path: "/about" },
                 { name: "Courses", path: "/course" },
-                { name: "Services", path: "/services" }
+                { name: "Services", path: "/services" },
+                ...(isAuthenticated ? [{ name: "Process", path: "/process" }] : []),
               ].map((item) => (
                 <li key={item.name}>
                   <Link 
@@ -146,13 +173,25 @@ function Navbar() {
             </ul>
 
             {/* Mobile CTA */}
-            <Link 
-              to="/login"
-              className="w-full px-5 py-3 rounded-full bg-primary text-primary-foreground font-semibold text-center hover:shadow-lg transition-all hover:scale-105 active:scale-95 mb-4"
-              onClick={() => setIsOpen(false)}
-            >
-              Get Started
-            </Link>
+            {isAuthenticated ? (
+              <button
+                onClick={() => {
+                  setIsOpen(false)
+                  handleLogout()
+                }}
+                className="w-full px-5 py-3 rounded-full bg-white/10 text-white font-semibold text-center hover:bg-white/20 transition-all hover:scale-105 active:scale-95 mb-4"
+              >
+                Logout
+              </button>
+            ) : (
+              <Link 
+                to="/login"
+                className="w-full px-5 py-3 rounded-full bg-primary text-primary-foreground font-semibold text-center hover:shadow-lg transition-all hover:scale-105 active:scale-95 mb-4"
+                onClick={() => setIsOpen(false)}
+              >
+                Get Started
+              </Link>
+            )}
 
             {/* Dark Mode Toggle */}
             <button 
